@@ -1,1 +1,1 @@
-# shopify-theme-theridge-repository
+# shopify-theme-theridge
