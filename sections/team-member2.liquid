@@ -1,0 +1,164 @@
+<style>
+*{
+    border: 0;
+    margin: 0;
+    padding: 0;
+    color: black;
+    font-family: sans-serif
+}
+body, html{
+    height: 100%;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    display: flex;  
+    align-items: center;
+    justify-content: center;
+    flex-flow: wrap;
+   background: #f5ede0;
+  padding: 40px;
+  margin-bottom: 40px;
+  border: 20px solid red;
+    border-image-source: url("https://cdn.shopify.com/s/files/1/0840/8668/5718/files/Map_background_2.jpg?v=1720788923");
+    border-image-slice: 3%;
+    border-image-width: 15px;
+    
+}
+.title-container {
+  width: 90%;
+  margin: 20px auto;
+}
+.card{
+    min-width: 280px;
+    max-width: 375px;
+    background-color: transparent;
+    border: 0px solid #eee;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+   
+    margin: 20px;
+    padding: 10px;
+}
+.img__container img{
+  width: 100%;
+  border: 8px solid black;
+  border-radius: 5px;
+}
+.img__container {
+  position: relative;
+}
+  .img__container::before {
+   content: "";
+    position: absolute;
+    z-index: 100;
+    top: -15px;
+    left: 50%;
+    height: 30px;
+    width: 40%;
+    background: rgba(255,255,235,.9);
+    box-shadow: 0 1px 3px rgba(0,0,0,.4);
+    transform: rotate(5deg) translateX(-50%);
+     
+}
+.card h1{
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  font-size: 30px;
+    
+}
+.card span{
+    display: inline-block;
+    color: #999;
+    margin-top: 10px
+}
+.card p{
+    font-size: 15px
+}
+.card a{
+    font-size: 20px
+}
+
+.card a i:hover{
+    color: #aaaaaa;
+    
+}
+.card button{
+    display: inline-block;
+    width: 87%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    font-size: 19px;
+    margin-bottom: 17px;
+    margin-top: 20px;
+    cursor: pointer;
+  
+}
+.card button:hover{
+    background-color: #25a6b1
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+.header-container {
+    display: flex;
+    align-itmes: center;
+}
+.icon-container {
+  height: 15px; 
+  width: 30px;
+}
+.icon-container img {
+  width: 100%;
+}
+
+
+</style>
+<div class="title-container">
+  <h1>Meet our Gear Experts</h1>
+</div>
+<div class="container">
+
+{% for member in shop.metaobjects.team_members.values %}
+    
+    <div class="card">
+      <a href="{{ member.pageurl }}">  
+        <div class="img__container">
+          <img src="{{member.image |img_url:'500x' }}"alt="Member">
+        </div>
+      </a>    
+      <div class="content-container">
+        <div class="header-container">
+            <h1>{{ member.name }}</h1>
+        </div>
+        <span>{{ member.title }}</span>
+        <p>{{ member.location }}</p>
+        {% if member.activity_expert.value %}
+        <div class="icon-container">
+            <img src="{{member.activity_expert.value.icon_image|img_url:'500x' }}"alt="Member">
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    
+{% endfor  %}
+</div>
+  
+{% schema %}
+  {
+    "name": "Team Members 2",
+    "settings": [],
+    "presets": [{
+        "name": "Team Members 2",
+        "category": "Text"
+  }]
+  }
+{% endschema %}
