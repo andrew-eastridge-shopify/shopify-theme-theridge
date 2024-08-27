@@ -9,7 +9,7 @@
 }
 #MainContent {
   padding-top: 15px;
-  border-top: 1px solid black;
+  border-top: 1px solid lightgray;
 }
 
 .product-card-wrapper .card,
