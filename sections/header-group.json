@@ -25,6 +25,9 @@
       "block_order": [
         "announcement-bar-0"
       ],
+      "custom_css": [
+        "p {font-size: 16px;}"
+      ],
       "settings": {
         "color_scheme": "inverse",
         "show_line_separator": true,
